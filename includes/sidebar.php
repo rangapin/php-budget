@@ -20,7 +20,8 @@
             <li class="active"> <a href="dashboard.php"><em class="favicon"></em>Dashboard</a></li>
             <li><a href="profile.php"><em class="favicon"></em>Profile</a></li>
             <li class="parent ">
-                <a data-toggle="collapse" href="itemOne"><em class="favicon"></em>Expenses <span data-toggle="collapse" href="itemOne" class="icon"><em class="favicon"></em></span></a>
+                <a data-toggle="collapse" href="itemOne"><em class="favicon">
+                </em>Expenses <span data-toggle="collapse" href="itemOne" class="icon"><em class="favicon"></em></span></a>
                     <ul class="children collapse" id="item1">
                   <li><a class="" href="expense.php"><span class="favicon"></span>Add</a></li>
                   <li><a class="" href="manage-expense.php"><span class="favicon"></span>Manage</a></li>
