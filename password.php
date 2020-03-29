@@ -3,7 +3,7 @@
    <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Log In</title>
+      <title>Forgot Password</title>
    </head>
    <body>
       <div class="container">
@@ -17,19 +17,17 @@
                         <input class="input-form" placeholder="E-mail" name="email" type="email" autofocus="" required="true">
                      </div>
                      <div class="login-form">
-                        <input class="input-form" placeholder="Password" name="password" type="password" value="" required="true">
+                        <input class="input-form" placeholder="Number" name="contactno" type="contactno" value="" required="true">
                      </div>
                      <div class="checkbox">
-                        <button type="submit" value="login" name="login" class="btn btn-primary">Login</button>
-                        <span><a href="register.php" class="btn btn-primary">Register</a></span>
-                        <br>
-                        <br>
-                        <a href="password.php">Forgot Password?</a>
+                        <button type="submit" value="" name="submit" class="btn btn-primary">Reset</button>
+                        <span><a href="index.php" class="btn btn-primary">Login</a></span>
                      </div>
                   </fieldset>
                </form>
             </div>
          </div>
+      </div>
       </div>
    </body>
 </html>
