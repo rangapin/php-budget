@@ -1,3 +1,26 @@
+<?php
+session_start();
+error_reporting(0);
+include('includes/config.php');
+
+if(isset($_POST['submit']))
+{
+   $number = $_POST['number'];
+   $email = $_POST['email'];
+   
+   $query = mysqli_query($con,"SELECT ID FROM user WHERE  Email='$email' AND NUMBER='$number' ");
+   $ret = mysqli_fetch_array($query);
+   if($ret>0){
+      $_SESSION['number']=$number;
+      $_SESSION['email']=$email;
+      header('location:reset-password.php');
+   }
+   else{
+      $msg="You have entered incorrect details";
+   }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
    <head>

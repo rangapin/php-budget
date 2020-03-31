@@ -1,3 +1,24 @@
+   <?php
+   session_start();
+   error_reporting(0);
+   include('includes/config.php');
+
+   if(isset($_POST['login']))
+   {
+      $email = $_POST['email'];
+      $password = md5($_POST['password']);
+      $query = mysqli_query($con,"SELECT ID FROM user WHERE email = '$email' && PASSWORD ='$password' ");
+      $ret = mysqli_fetch_array($query);
+      if($ret > 0){
+         $_SESSION['personaluid']=$ret['ID'];
+      header('location:dashboard.php');
+      }
+      else{
+      $msg="These details are invalid.";
+      }
+   }
+   ?>
+
 <!DOCTYPE html>
 <html lang="en">
    <head>

@@ -1,3 +1,33 @@
+
+<?php 
+session_start();
+error_reporting(0);
+include('includes/config.php');
+if(isset($_POST['submit']))
+{
+   $name = $_POST['name'];
+   $number = $_POST['number'];
+   $email = $_POST['email'];
+   $password = md5($_POST['password']);
+   
+   $ret=mysqli_query($con, "SELECT email FROM user WHERE email = '$email' ");
+   $result=mysqli_fetch_array($ret);
+   if($result > 0){
+      $msg="This email is already in use";
+   }
+   else{
+      $query=mysqli_query($con, "INSERT INTO user(NAME, NUMBER, email,  PASSWORD) value('$name', '$number', '$email', '$password' )");
+      if ($query) {
+         $msg="You have now registered";
+      }
+      else
+      {
+         $msg="Please try again";
+      }
+   }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
    <head>
