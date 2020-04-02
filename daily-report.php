@@ -27,6 +27,7 @@
          </div>
          <div class="row">
             <div class="col-lg-12">
+            
                <div class="panel">
                   <div class="heading">Daily Report</div>
                   <div class="body">

@@ -34,8 +34,8 @@
                   <div class="body">
                      <?php
                         $userId=$_SESSION['personaluid'];
-                        $tdate=date('Y-m-d');
-                        $query=mysqli_query($con,"SELECT sum(cost) AS todaysexpense FROM expense WHERE (date)='$tdate' && (userId='$userId');");
+                        $today_date=date('Y-m-d');
+                        $query=mysqli_query($con,"SELECT sum(cost) AS todaysexpense FROM expense WHERE (date)='$todaydate' && (userId='$userId');");
                         $result=mysqli_fetch_array($query);
                         $sum_today_expense=$result['todaysexpense'];
                         ?> 
@@ -56,10 +56,10 @@
                <div class="panel">
                   <?php
                      $userId=$_SESSION['personaluid'];
-                     $ydate=date('Y-m-d',strtotime("-1 days"));
-                     $query1=mysqli_query($con,"SELECT sum(cost) AS yesterdayexpense FROM expense WHERE (date)='$ydate' && (userId='$userId');");
-                     $result1=mysqli_fetch_array($query1);
-                     $sum_yesterday_expense=$result1['yesterdayexpense'];
+                     $yesterday_date=date('Y-m-d',strtotime("-1 days"));
+                     $query_one=mysqli_query($con,"SELECT sum(cost) AS yesterdayexpense FROM expense WHERE (date)='$yesterday_date' && (userId='$userId');");
+                     $result_one=mysqli_fetch_array($query_one);
+                     $sum_yesterday_expense=$result_one['yesterdayexpense'];
                      ?> 
                   <div class="panel">
                      <h4>Yesterday's</h4>
@@ -80,11 +80,11 @@
                <div class="panel">
                   <?php
                      $userId=$_SESSION['personaluid'];
-                     $pastdate=  date("Y-m-d", strtotime("-1 week")); 
+                     $previous_date=  date("Y-m-d", strtotime("-1 week")); 
                      $crrntdte=date("Y-m-d");
-                     $query2=mysqli_query($con,"SELECT sum(cost) AS weeklyexpense FROM expense WHERE ((date) BETWEEN '$pastdate' AND '$crrntdte') && (userId='$userId');");
-                     $result2=mysqli_fetch_array($query2);
-                     $sum_weekly_expense=$result2['weeklyexpense'];
+                     $query_two=mysqli_query($con,"SELECT sum(cost) AS weeklyexpense FROM expense WHERE ((date) BETWEEN '$previous_date' AND '$crrntdte') && (userId='$userId');");
+                     $result_two=mysqli_fetch_array($query_two);
+                     $sum_weekly_expense=$result_two['weeklyexpense'];
                      ?>
                   <div class="panel">
                      <h4>Last 7 day's</h4>
@@ -105,11 +105,11 @@
                <div class="panel">
                   <?php
                      $userId=$_SESSION['personaluid'];
-                     $monthdate=  date("Y-m-d", strtotime("-1 month")); 
+                     $month_date=  date("Y-m-d", strtotime("-1 month")); 
                      $crrntdte=date("Y-m-d");
-                     $query3=mysqli_query($con,"SELECT sum(cost) AS monthlyexpense FROM expense WHERE ((date) BETWEEN '$monthdate' AND '$crrntdte') && (userId='$userId');");
-                     $result3=mysqli_fetch_array($query3);
-                     $sum_monthly_expense=$result3['monthlyexpense'];
+                     $query_three=mysqli_query($con,"SELECT sum(cost) AS monthlyexpense FROM expense WHERE ((date) BETWEEN '$month_date' AND '$crrntdte') && (userId='$userId');");
+                     $result_three=mysqli_fetch_array($query_three);
+                     $sum_monthly_expense=$result_three['monthlyexpense'];
                      ?>
                   <div class="panel">
                      <h4>Last 30 day's</h4>
@@ -132,10 +132,10 @@
                <div class="panel">
                   <?php
                      $userId=$_SESSION['personaluid'];
-                     $cyear= date("Y");
-                     $query4=mysqli_query($con,"SELECT sum(cost) AS yearlyexpense FROM expense WHERE (year(date)='$cyear') && (userId='$userId');");
-                     $result4=mysqli_fetch_array($query4);
-                     $sum_yearly_expense=$result4['yearlyexpense'];
+                     $this_year= date("Y");
+                     $query_four=mysqli_query($con,"SELECT sum(cost) AS yearlyexpense FROM expense WHERE (year(date)='$this_year') && (userId='$userId');");
+                     $result_four=mysqli_fetch_array($query_four);
+                     $sum_yearly_expense=$result_four['yearlyexpense'];
                      ?>
                   <div class="panel">
                      <h4>This Year</h4>
@@ -155,9 +155,9 @@
                <div class="panel">
                   <?php
                      $userId=$_SESSION['personaluid'];
-                     $query5=mysqli_query($con,"SELECT sum(cost) AS totalexpense FROM expense WHERE userId='$userId';");
-                     $result5=mysqli_fetch_array($query5);
-                     $sum_total_expense=$result5['totalexpense'];
+                     $query_five=mysqli_query($con,"SELECT sum(cost) AS totalexpense FROM expense WHERE userId='$userId';");
+                     $result_five=mysqli_fetch_array($query_five);
+                     $sum_total_expense=$result_five['totalexpense'];
                      ?>
                   <div class="panel">
                      <h4>Total</h4>
