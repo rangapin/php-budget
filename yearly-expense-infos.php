@@ -1,4 +1,11 @@
-Formatted HTML:
+<?php
+   session_start();
+   error_reporting(0);
+   include('includes/config.php');
+   if (strlen($_SESSION['personaluid']==0)) {
+     header('location:logout.php');
+     } else{
+     ?>
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -9,6 +16,8 @@ Formatted HTML:
       <title>Yearly Report</title>
    </head>
    <body>
+      <?php include_once('includes/header.php');?>
+      <?php include_once('includes/sidebar.php');?>
       <div class="container">
          <div class="row">
          </div>
@@ -18,8 +27,11 @@ Formatted HTML:
                   <div class="panel">Yearly Report</div>
                   <div class="panel">
                      <div class="col-md-12">
-                        <h5>Yearly Report</h5>
-                        <hr />
+                        <?php
+                           $from_date=$_POST['fromdate'];
+                           $end_date=$_POST['todate'];
+                           $type=$_POST['requesttype'];
+                           ?>
                         <table id="datatable" class="table">
                            <thead>
                               <tr>
@@ -29,20 +41,33 @@ Formatted HTML:
                                  <th>Expense Amount</th>
                               </tr>
                               </tr>
-                              <tr>
-                                 <td></td>
-                                 <td></td>
-                                 <td></td>
-                              </tr>
-                              <tr>
-                                 <th>Total</th>
-                                 <td></td>
-                              </tr>
+                           </thead>
+                           <?php
+                              $userId=$_SESSION['personaluid'];
+                              $return=mysqli_query($con,"SELECT year(date) AS rptyear,SUM(cost) AS totalyear FROM expense  WHERE (date BETWEEN '$from_date' AND '$end_date') && (userId='$userId') GROUP BY year(date)");
+                              $content=1;
+                              while ($row=mysqli_fetch_array($return)) {
+                              
+                              ?>
+                           <tr>
+                              <td><?php echo $content;?></td>
+                              <td><?php echo $row['rptyear'];?></td>
+                              <td><?php echo $totalsl=$row['totalyear'];?></td>
+                           </tr>
+                           <?php
+                              $totalsexp+=$totalsl; 
+                              $content=$content+1;
+                              }?>
+                           <tr>
+                              <th colspan="2">Total</th>
+                              <td><?php echo $totalsexp;?></td>
+                           </tr>
                         </table>
                      </div>
                   </div>
                </div>
             </div>
+            <?php include_once('includes/footer.php');?>
          </div>
       </div>
    </body>

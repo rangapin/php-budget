@@ -64,7 +64,7 @@
                               $content=$content+1;
                               }?>
                            <tr>
-                              <th colspan="2" style="text-align:center">Total</th>
+                              <th colspan="2">Total</th>
                               <td><?php echo $totalsexp;?></td>
                            </tr>
                         </table>

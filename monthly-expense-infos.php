@@ -1,3 +1,11 @@
+<?php
+   session_start();
+   error_reporting(0);
+   include('includes/config.php');
+   if (strlen($_SESSION['personaluid']==0)) {
+     header('location:logout.php');
+     } else{
+     ?>
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -8,6 +16,8 @@
       <title>Monthly Report</title>
    </head>
    <body>
+      <?php include_once('includes/header.php');?>
+      <?php include_once('includes/sidebar.php');?>
       <div class="container">
          <div class="row">
          </div>
@@ -17,7 +27,12 @@
                   <div class="heading">Monthly Report</div>
                   <div class="body">
                      <div class="col-md-12">
-                        <h5>Expense Report</h5>
+                        <?php
+                           $from_date=$_POST['fromdate'];
+                           $end_date=$_POST['todate'];
+                           $type=$_POST['requesttype'];
+                           ?>
+                        <h5>Expense Report from <?php echo $from_date?> to <?php echo end_date?></h5>
                         <hr />
                         <table id="datatable" class="table">
                            <thead>
@@ -29,20 +44,27 @@
                               </tr>
                               </tr>
                            </thead>
+                           <?php
+                              $userId=$_SESSION['personaluid'];
+                              $return=mysqli_query($con,"SELECT DATE,SUM(cost) AS totaldaily FROM expense  WHERE (DATE BETWEEN '$from_date' AND 'end_date') && (userId='$userId') GROUP BY DATE");
+                              $content=1;
+                              while ($row=mysqli_fetch_array($return)) {
+                              
+                              ?>
                            <tr>
-                              <td></td>
-                              <td></td>
-                              <td></td>
+                              <td><?php echo $content;?></td>
+                              <td><?php echo $row['date'];?></td>
+                              <td><?php echo $totalsl=$row['totaldaily'];?></td>
                            </tr>
-                           <tr>
-                              <th>Total</th>
-                              <td>Total</td>
+                           <th>Total</th>
+                           <td><?php echo $totalsexp;?></td>
                            </tr>
                         </table>
                      </div>
                   </div>
                </div>
             </div>
+            <?php include_once('includes/footer.php');?>
          </div>
       </div>
    </body>
