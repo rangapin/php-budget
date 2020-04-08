@@ -1,18 +1,16 @@
 <?php
-   session_start();
-   error_reporting(0);
-   include('includes/config.php');
-   if (strlen($_SESSION['personaluid']==0)) {
-     header('location:logout.php');
-     } else{
-   
-     
-   
-     ?>
+session_start();
+error_reporting(0);
+include('includes/config.php');
+if (strlen($_SESSION['personaluid']==0)) {
+   header('location:logout.php');
+} else{
+   ?>
+
 <!DOCTYPE html>
 <html>
-   <head>
 
+   <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -30,7 +28,7 @@
          <div class="row">
             <div class="col-lg-12">
                <div class="panel ">
-                  <div class="heading">Monthly Report</div>
+                  <div class="heading">Expense Report</div>
                   <div class="body">
                      <div class="col-md-12">
                         <?php
@@ -38,29 +36,29 @@
                            $end_date=$_POST['todate'];
                            $type=$_POST['requesttype'];
                            ?>
-                        <h5>Monthly Report from <?php echo $start_date?> to <?php echo $end_date?></h5>
+                        <h5>Expense Report from <?php echo $start_date?> to <?php echo $end_date?></h5>
                         <hr />
                         <table id="datatable" class="table">
                            <thead>
                               <tr>
                               <tr>
                                  <th>Item</th>
-                                 <th>Month-Year</th>
-                                 <th>Amount</th>
+                                 <th>Date</th>
+                                 <th>Expense Amount</th>
                               </tr>
                               </tr>
                            </thead>
                            <?php
                               $userid=$_SESSION['personaluid'];
-                              $return=mysqli_query($con,"SELECT month(purchaseDate) AS submonth,year(purchasedate) AS subyear,SUM(cost) AS totalmonth FROM expense  WHERE (purchaseDate BETWEEN '$start_date' AND '$end_date') && (UserId='$userid') GROUP BY month(purchaseDate),year(purchaseDate)");
+                              $return=mysqli_query($con,"SELECT purchaseDate,SUM(cost) AS totaldaily FROM expense  WHERE (purchaseDate BETWEEN '$start_date' AND '$end_date') && (UserId='$userid') GROUP BY purchaseDate");
                               $content=1;
                               while ($row=mysqli_fetch_array($return)) {
                               
                               ?>
                            <tr>
                               <td><?php echo $content;?></td>
-                              <td><?php echo $row['submonth']."-".$row['subyear'];?></td>
-                              <td><?php echo $total=$row['totalmonth'];?></td>
+                              <td><?php echo $row['purchaseDate'];?></td>
+                              <td><?php echo $total=$row['totaldaily'];?></td>
                            </tr>
                            <?php
                               $totalsexp+=$total; 

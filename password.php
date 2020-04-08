@@ -1,57 +1,88 @@
 <?php
-session_start();
-error_reporting(0);
-include('includes/config.php');
-
-if(isset($_POST['submit']))
-{
-   $number = $_POST['number'];
-   $email = $_POST['email'];
+   session_start();
+   include('includes/config.php');
+   error_reporting(0);
+   if (strlen($_SESSION['personaluid']==0)) {
+     header('location:logout.php');
+     } else{
+   if(isset($_POST['submit']))
+   {
+   $userid=$_SESSION['personaluid'];
+   $current_pass=md5($_POST['currentpassword']);
+   $new_pass=md5($_POST['new_pass']);
+   $query=mysqli_query($con,"SELECT ID FROM user WHERE ID='$userid' AND PASSWORD='$current_pass'");
+   $row=mysqli_fetch_array($query);
+   if($row>0){
+   $return=mysqli_query($con,"UPDATE user SET PASSWORD='$new_pass' WHERE ID='$userid'");
+   $message= "Your password successully changed"; 
+   } else {
    
-   $query = mysqli_query($con,"SELECT ID FROM user WHERE  Email='$email' AND NUMBER='$number' ");
-   $ret = mysqli_fetch_array($query);
-   if($ret>0){
-      $_SESSION['number']=$number;
-      $_SESSION['email']=$email;
-      header('location:reset-password.php');
+   $message="Your current password is wrong";
    }
-   else{
-      $msg="You have entered incorrect details";
    }
-}
-?>
-
+   
+     ?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
    <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
       <link rel="stylesheet" type="text/css" href="css/style.css">
-      <title>Password</title>
+      <title>Personal Finances</title>
    </head>
+
    <body>
+
+      <?php include_once('includes/header.php');?>
+      <?php include_once('includes/sidebar.php');?>
+
       <div class="container">
-         <div class="login">
-            <div class="heading">Reset your password</div>
-            <div class="body">
-               <form role="form" action="" method="post" id="" name="login">
-                  <fieldset>
-                     <div class="login-form">
-                        <input class="input-form" placeholder="E-mail" name="email" type="email" autofocus="" required="true">
+
+         <div class="row">
+            <div class="col-lg-12">
+               <div class="panel ">
+                  <div class="heading">Change Password</div>
+                  <div class="body">
+
+                     <p> <?php if($message){echo $message;}?></p>
+                     
+                     <div class="col-md-12">
+                        <?php
+                           $userid=$_SESSION['personaluid'];
+                           $return=mysqli_query($con,"SELECT * FROM user WHERE ID='$userid'");
+                           $content=1;
+                           while ($row=mysqli_fetch_array($return)) {
+                           
+                           ?>
+                        <form role="form" method="post" action="" name="changepassword" onsubmit="returnurn checkpass();">
+                           <div class="group">
+                              <label>Current Password</label>
+                              <input type="password" name="currentpassword" class="control" required= "true" value="">
+                           </div>
+                           <div class="group">
+                              <label>New Password</label>
+                              <input type="password" name="new_pass" class="control" value="" required="true">
+                           </div>
+                           <div class="group">
+                              <label>Confirm Password</label>
+                              <input type="password" name="confirmpassword" class="control" value="" required="true">
+                           </div>
+                           <div class="group">
+                              <button type="submit" class="btn btn-primary" name="submit">Change</button>
+                           </div>
                      </div>
-                     <div class="login-form">
-                        <input class="input-form" placeholder="Number" name="contactno" type="contactno" value="" required="true">
-                     </div>
-                     <div class="checkbox">
-                        <button type="submit" value="" name="submit" class="btn btn-primary">Reset</button>
-                        <span><a href="index.php" class="btn btn-primary">Login</a></span>
-                     </div>
-                  </fieldset>
-               </form>
+                     <?php } ?>
+                     </form>
+                  </div>
+               </div>
             </div>
          </div>
+         <?php include_once('includes/footer.php');?>
       </div>
       </div>
+
    </body>
 </html>
+<?php }  ?>

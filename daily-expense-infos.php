@@ -7,29 +7,32 @@
      } else{
      ?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
    <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
       <link rel="stylesheet" type="text/css" href="css/style.css">
-      <title>Daily Report</title>
+      <title>Personal Finances</title>
    </head>
+
    <body>
+
       <?php include_once('includes/header.php');?>
       <?php include_once('includes/sidebar.php');?>
+
       <div class="container">
-         <div class="row">
-         </div>
+ 
          <div class="row">
             <div class="col-lg-12">
-               <div class="panel">
+               <div class="panel ">
                   <div class="heading">Daily Report</div>
                   <div class="body">
                      <div class="col-md-12">
                         <?php
                            $start_date=$_POST['fromdate'];
-                            $end_date=$_POST['todate'];
+                           $end_date=$_POST['todate'];
                            $type=$_POST['requesttype'];
                            ?>
                         <h5>Daily Report from <?php echo $start_date?> to <?php echo $end_date?></h5>
@@ -38,25 +41,31 @@
                            <thead>
                               <tr>
                               <tr>
-                                 <th>Item Number</th>
+                                 <th>Item</th>
                                  <th>Date</th>
-                                 <th>Expense Amount</th>
+                                 <th>Amount</th>
                               </tr>
                               </tr>
                            </thead>
                            <?php
-                              $userId=$_SESSION['personaluid'];
-                              $return=mysqli_query($con,"SELECT date,SUM(cost) as totaldaily FROM `expense`  WHERE (date BETWEEN '$start_date' and '$end_date') && (userId='$userId') GROUP BY date");
+                              $userid=$_SESSION['personaluid'];
+                              $return=mysqli_query($con,"SELECT purchaseDate, SUM(cost) AS totaldaily FROM `expense` WHERE (purchaseDate BETWEEN '$start_date' AND '$end_date') && (UserId='$userid') GROUP BY purchaseDate");
                               $content=1;
                               while ($row=mysqli_fetch_array($return)) {
+                              
                               ?>
                            <tr>
                               <td><?php echo $content;?></td>
-                              <td><?php echo $row['date'];?></td>
-                              <td><?php echo $totalsl=$row['totaldaily'];?></td>
+                              <td><?php echo $row['purchaseDate'];?></td>
+                              <td><?php echo $total=$row['totaldaily'];?></td>
                            </tr>
-                           <th>Total</th>
-                           <td><?php echo $totalsexp;?></td>
+                           <?php
+                              $totalsexp+=$total; 
+                              $content=$content+1;
+                              }?>
+                           <tr>
+                              <th>Total</th>
+                              <td><?php echo $totalsexp;?></td>
                            </tr>
                         </table>
                      </div>
