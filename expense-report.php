@@ -37,7 +37,7 @@ if (strlen($_SESSION['personaluid']==0)) {
                      <p><?php if($message){echo $message;}?></p>
 
                      <div class="col-md-12">
-                        <form role="form" method="post" action="expense-report-detailed.php" name="bwdatesreport">
+                        <form role="form" method="post" action="expense.php" name="bwdatesreport">
                            <div class="group">
                               <label>From</label>
                               <input class="form-control" type="date"  id="fromdate" name="fromdate" required="true">

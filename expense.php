@@ -9,17 +9,16 @@ if (strlen($_SESSION['personaluid']== 0)) {
    if(isset($_POST['submit']))
    {
       $userid=$_SESSION['personaluid'];
-      $dateexpense=$_POST['dateexpense'];
+      $date_expense=$_POST['date_expense'];
       $item=$_POST['item'];
-      $costitem=$_POST['costitem'];
-      $query=mysqli_query($con,"INSERT INTO expense (userId,purchaseDate,item,cost) VALUE ('$userid','$dateexpense','$item','$costitem')");
+      $item_price=$_POST['item_price'];
+      $query=mysqli_query($con,"INSERT INTO expense (userId,purchaseDate,item,cost) VALUE ('$userid','$date_expense','$item','$item_price')");
       
       if($query){
          echo "<script>alert('Expense has been added');</script>";
 
-         echo "<script>window.location.href='expense-report-detailed.php'</script>";
+         echo "<script>window.location.href='dashboard.php'</script>";
       } else {
-         echo "<script>alert('Something went wrong. Please try again');</script>";
       }
    }
 ?>
@@ -54,7 +53,7 @@ if (strlen($_SESSION['personaluid']== 0)) {
                         <form role="form" method="post" action="">
                            <div class="group">
                               <label>Date</label>
-                              <input class="form-control" type="date" value="" name="dateexpense" required="true">
+                              <input class="form-control" type="date" value="" name="date_expense" required="true">
                            </div>
                            <div class="group">
                               <label>Item</label>
@@ -62,7 +61,7 @@ if (strlen($_SESSION['personaluid']== 0)) {
                            </div>
                            <div class="group">
                               <label>Cost</label>
-                              <input class="form-control" type="text" value="" required="true" name="costitem">
+                              <input class="form-control" type="text" value="" required="true" name="item_price">
                            </div>
                            <div class="group">
                               <button type="submit" class="btn btn-primary" name="submit">Add</button>

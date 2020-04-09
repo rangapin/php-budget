@@ -47,11 +47,11 @@
                      <p><?php if($message){echo $message;}?></p>
                      
                      <div class="col-md-12">
-                     ID          <div class="table">
+                           <div class="table">
                            <table class="table-bordered">
                               <thead>
                                  <tr>
-                                    <th>Item</th>
+                                    <th>ID</th>
                                     <th>Item</th>
                                     <th>Cost</th>
                                     <th>Date</th>

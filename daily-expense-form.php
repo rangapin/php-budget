@@ -4,11 +4,9 @@
    include('includes/config.php');
    if (strlen($_SESSION['personaluid']==0)) {
      header('location:logout.php');
-     } else{
-   
-     
-   
-     ?>
+     } else {
+?>
+
 <!DOCTYPE html>
 <html>
 

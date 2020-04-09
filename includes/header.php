@@ -1,3 +1,3 @@
-<div class="container">
-    <span>Your Personal Finance</span>
+<div class="header">
+    <div>Your Personal Finance</div>
 </div>

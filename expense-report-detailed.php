@@ -50,14 +50,14 @@ if (strlen($_SESSION['personaluid']==0)) {
                            </thead>
                            <?php
                               $userid=$_SESSION['personaluid'];
-                              $return=mysqli_query($con,"SELECT purchaseDate,SUM(cost) AS totaldaily FROM expense  WHERE (purchaseDate BETWEEN '$start_date' AND '$end_date') && (UserId='$userid') GROUP BY purchaseDate");
+                              $return=mysqli_query($con,"SELECT theDate,SUM(cost) AS totaldaily FROM expense  WHERE (theDate BETWEEN '$start_date' AND '$end_date') && (UserId='$userid') GROUP BY theDate");
                               $content=1;
                               while ($row=mysqli_fetch_array($return)) {
                               
                               ?>
                            <tr>
                               <td><?php echo $content;?></td>
-                              <td><?php echo $row['purchaseDate'];?></td>
+                              <td><?php echo $row['theDate'];?></td>
                               <td><?php echo $total=$row['totaldaily'];?></td>
                            </tr>
                            <?php

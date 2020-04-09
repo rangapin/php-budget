@@ -31,35 +31,30 @@ if(isset($_POST['login']))
    </head>
 
    <body>
-      <div class="row">
-         <h2>Log In</h2>
+      <div class="icontainer">
 
-         <div class="container">
-            <div class="panel ">
-               <div class="heading">Log in</div>
                <div class="body">
-
+                  
                   <p><?php if($message){echo $message;}?></p>
                   
                   <form role="form" action="" method="post" id="" name="login">
+                     <div class="heading">LOG IN</div>
                      <fieldset>
-                        <div class="group">
+                        <div class="group-one">
                            <input class="control" placeholder="E-mail" name="email" type="email" autofocus="" required="true">
                         </div>
-                        <a href="forgot-password.php">Forgot Password?</a>
-                        <div class="group">
+                        <div class="group-one">
                            <input class="control" placeholder="Password" name="password" type="password" value="" required="true">
                         </div>
-                        <div class="checkbox">
+                        <div class="checkbox-one">
                            <button type="submit" value="login" name="login" class="btn btn-primary">Login</button>
                            <span><a href="register.php" class="btn btn-primary">Register</a></span>
+                           <a href="forgot-password.php">Forgot Password?</a>
                         </div>
                      </fieldset>
                   </form>
                </div>
             </div>
-         </div>
-      </div>
-
+      <?php include_once('includes/footer.php');?>
    </body>
 </html>

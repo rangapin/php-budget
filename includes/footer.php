@@ -1,3 +1,3 @@
-<div class="col-sm-12">
-    <p class="copyright"><a href="https://richardangapin.io/">&copy; Richard Angapin 2020</a></p>
+<div class="footer">
+    <p class="copyright">© Richard Angapin 2020</p>
 </div>

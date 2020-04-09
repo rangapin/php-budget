@@ -1,50 +1,188 @@
-/* body {
-    background-color: lightgrey;
+* {
+  font-family: 'Times New Roman', Times, serif;
 }
-
+body {
+  background-color: WHITE;
+}
+.container {
+  display: flex;
+  justify-content: center;
+}
 .icontainer {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
+  background-color: DODGERBLUE;
+  height: 100%;
 }
-
-.rcontainer {
-    display: flex;
-    justify-content: center;
+.charts {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 44px;
+  margin: 44px;
 }
-
+.easypiechart {
+  padding: 44px;
+}
+.control {
+  width: 33vw;
+  align-self: center;
+  margin: 14px;
+  height: 44px;
+}
 fieldset {
-    margin: 80px;
-    padding: 44px;
-    height: 50vh;
-    width: 50vw;
-    border: 4px solid blue;
-    background-color: white;
+  display:flex;
+  align-items: center;
+  margin: 60px;
+  padding: 44px;
+  height: 70vh;
+  width: 50vw;
+  border: 4px solid DODGERBLUE;
+  background-color: white;
 }
-
+.group-one {
+  display:flex;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  padding: 14px;
+}
+.checkbox-one {
+  display:flex;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  margin: 14px;
+  padding-left: 24px;
+}
+.checkbox-one button {
+  margin: 14px;
+  padding: 14px;
+}
+.checkbox-one a {
+  margin: 14px;
+  padding: 14px;
+}
 .center {
-    display: none;
+  display: none;
 }
-
 .heading {
-    text-align: center;
-    padding: 24px;
-    font-size: 24px;
-    font-family: Arial, Helvetica, sans-serif;
-    color: black;
-    margin-top: 40px;
+  text-align: center;
+  padding: 14px;
+  font-size: 24px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  margin-top: 40px;
 }
-
 .input-form {
-    border: 1px solid black;
-    padding: 8px;
-    width: -webkit-fill-available;
+  border: 1px solid BLACK;
+  padding: 8px;
+  width: -webkit-fill-available;
 }
-
 .login-form {
-    padding: 4px;
+  padding: 4px;
+}
+.checkbox {
+  margin: 8px;
+}
+.header {
+  padding: 30px;
+  text-align: center;
+  background: DODGERBLUE;
+  color: BLACK;
+  font-size: 22px;
+}
+.footer {
+  position: fixed;
+  padding: 10px;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color:DODGERBLUE;
+  color: BLACK;
+  text-align: center;
+}
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+.dropdown .dropbtn {
+  font-size: 17px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+.topnav a:hover, .dropdown:hover .dropbtn {
+  background-color: #555;
+  color: white;
+}
+.sidenav {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: BLACK;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+.sidenav a, .dropdown-btn {
+  padding: 6px;
+  text-decoration: none;
+  font-size: 20px;
+  color: WHITE;
+  display: block;
+  border: none;
+  background: none;
+  width:100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
 }
 
-.checkbox {
-    margin: 8px;
-} */
-
+.sidenav a:hover, .dropdown-btn:hover {
+  color: #f1f1f1;
+  }
+  
+.main {
+  margin-left: 200px; 
+  font-size: 20px; 
+  padding: 0px 10px;
+  }
+  
+.active {
+  background-color: DODGERBLUE;
+  color: white;
+  }
+  
+.dropdown-container {
+  display: none;
+  background-color: #262626;
+  padding-left: 8px;
+  }
+  
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+  }
