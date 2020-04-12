@@ -44,7 +44,6 @@ if (strlen($_SESSION['personaluid']== 0)) {
          <div class="row">
             <div class="col-lg-12">
                <div class="panel ">
-                  <div classdate="heading">Expense</div>
                   <div class="body">
 
                      <p><?php if($message){echo $message;}?></p>
