@@ -1,56 +1,40 @@
 <?php
-   session_start();
-   error_reporting(0);
-   include('includes/config.php');
+  session_start();
+  error_reporting(0);
+  include('includes/config.php');
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Document</title>
-   </head>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/style.css" rel="stylesheet">
+    <title>Personal Finance</title>
+  </head>
 
-   <body>
-      <div class="sidenav">
-         <a href="dashboard.php">Dashboard</a>
-         <button class="dropdown-btn">Manage Expense<i class="fa fa-caret-down"></i></button>
-         <div class="dropdown-container">
-            <a href="expense-report.php">Add</a>
-            <a href="manage-expense.php">Manage</a>
-         </div>
-         <button class="dropdown-btn">Expense Reports<i class="fa fa-caret-down"></i></button>
-         <div class="dropdown-container">
-            <a href="daily-expense-form.php">Daily</a>
-            <a href="monthly-expense-form.php">Monthly</a>
-            <a href="yearly-expense-form.php">Yearly</a>
-         </div>
-         <a href="profile.php">Profile</a>
-         <a href="logout.php">Log Out</a>
-      </div>
-
-      <script>
-         var dropdown = document.getElementsByClassName("dropdown-btn");
-         var i;
-         
-         for (i = 0; i < dropdown.length; i++) {
-           dropdown[i].addEventListener("click", function() {
-             this.classList.toggle("active");
-             var dropdownContent = this.nextElementSibling;
-             if (dropdownContent.style.display === "block") {
-               dropdownContent.style.display = "none";
-             } else {
-               dropdownContent.style.display = "block";
-             }
-           });
-         }
-      </script>
-   </body>
+  <body>
+    <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+      <ul class="nav menu">
+        <li class="active"><a href="dashboard.php"> Dashboard</a></li>
+        <li class="parent">
+          <a data-toggle="collapse" href="#sub-item-1"> Expenses <span data-toggle="collapse" href="#sub-item-1"></span></a>
+          <ul class="children collapse" id="sub-item-1">
+            <li><a class="" href="expense.php"> Add</a></li>
+            <li><a class="" href="manage-expense.php"> Manage</a></li>
+          </ul>
+        </li>
+        <li class="parent">
+          <a data-toggle="collapse" href="#sub-item-2"> Expense Report <span data-toggle="collapse" href="#sub-item-1"></span></a>
+          <ul class="children collapse" id="sub-item-2">
+            <li><a class="" href="daily-expense-form.php"> Daily</a></li>
+            <li><a class="" href="monthly-expense-form.php"> Monthly</a></li>
+            <li><a class="" href="yearly-expense-form.php"> Yearly</a></li>
+          </ul>
+        </li>
+        <li><a href="logout.php"> Logout</a></li>
+      </ul>
+    </div>
+  </body>
 </html>
-
-
-
-
-

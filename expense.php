@@ -1,80 +1,91 @@
 <?php
-session_start();
-error_reporting(0);
-include('includes/config.php');
-if (strlen($_SESSION['personaluid']== 0)) {
-   header('location:logout.php');
-} else{
-   
-   if(isset($_POST['submit']))
-   {
+  session_start();
+  error_reporting(0);
+  include('includes/config.php');
+  if (strlen($_SESSION['personaluid']==0)) {
+    header('location:logout.php');
+    } else{
+  
+  if(isset($_POST['submit']))
+    {
       $userid=$_SESSION['personaluid'];
-      $date_expense=$_POST['date_expense'];
+      $dateExpense=$_POST['dateexpense'];
       $item=$_POST['item'];
-      $item_price=$_POST['item_price'];
-      $query=mysqli_query($con,"INSERT INTO expense (userId,purchaseDate,item,cost) VALUE ('$userid','$date_expense','$item','$item_price')");
-      
-      if($query){
-         echo "<script>alert('Expense has been added');</script>";
+      $costitem=$_POST['costitem'];
+      $query=mysqli_query($con, "INSERT INTO expense(userId,purchaseDate,item,cost) VALUE('$userid','$dateExpense','$item','$costitem')");
+  if($query){
 
-         echo "<script>window.location.href='dashboard.php'</script>";
-      } else {
-      }
-   }
+  echo "<script>alert('Your expense has been added');</script>";
+
+  echo "<script>window.location.href='expense-reports.php'</script>";
+
+  } else {
+
+  echo "<script>alert('Something went wrong. Please try again');</script>";
+  } 
+  }
 ?>
 
 <!DOCTYPE html>
 <html>
 
-   <head>
-      <meta charset="UTF-8"Expense Report>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-      <link rel="stylesheet" type="text/css" href="css/style.css">
-      <title>Personal Finances</title>
-   </head>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Personal Finance</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/datepicker3.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+  </head>
 
-   <body>
+  <body>
+    <?php include_once('includes/header.php');?>
+	<?php include_once('includes/sidebar.php');?>
+	
+    <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="default">
+            <div class="heading">Add an Expense</div>
+            <div class="body">
 
-      <?php include_once('includes/header.php');?>
-      <?php include_once('includes/sidebar.php');?>
-
-      <div class="container">
-
-         <div class="row">
-            <div class="col-lg-12">
-               <div class="panel ">
-                  <div class="body">
-
-                     <p><?php if($message){echo $message;}?></p>
-
-                     <div class="col-md-12">
-                        <form role="form" method="post" action="">
-                           <div class="group">
-                              <label>Date</label>
-                              <input class="form-control" type="date" value="" name="date_expense" required="true">
-                           </div>
-                           <div class="group">
-                              <label>Item</label>
-                              <input type="text" class="form-control" name="item" value="" required="true">
-                           </div>
-                           <div class="group">
-                              <label>Cost</label>
-                              <input class="form-control" type="text" value="" required="true" name="item_price">
-                           </div>
-                           <div class="group">
-                              <button type="submit" class="btn btn-primary" name="submit">Add</button>
-                           </div>
-                     </div>
-                     </form>
+			  <p><?php if($message){echo $message;}?></p>
+			  
+              <div class="col-md-12">
+                <form role="form" method="post" action="expense.php">
+                  <div class="form-group">
+					  <input class="form-control" type="date" value="" name="dateexpense" required="true">
+					  <label>Date</label>
                   </div>
-               </div>
+                  <div class="form-group">
+					  <input type="text" class="form-control" name="item" value="" required="true">
+					  <label>Item</label>
+                  </div>
+                  <div class="form-group">
+					  <input class="form-control" type="text" value="" required="true" name="costitem">
+					  <label>Cost</label>
+                  </div>
+                  <div class="form-group has-success">
+                    <button type="submit" class="btn btn-primary" name="submit">Add</button>
+                  </div>
+              </div>
+              </form>
             </div>
-         </div>
-         <?php include_once('includes/footer.php');?>
+          </div>
+        </div>
       </div>
-      </div>
-
-   </body>
+      <?php include_once('includes/footer.php');?>
+    </div>
+    </div>
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/chart.min.js"></script>
+    <script src="js/chart-data.js"></script>
+    <script src="js/easypiechart.js"></script>
+    <script src="js/easypiechart-data.js"></script>
+    <script src="js/bootstrap-datepicker.js"></script>
+    <script src="js/custom.js"></script>
+  </body>
 </html>
 <?php }  ?>

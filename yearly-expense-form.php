@@ -1,61 +1,72 @@
 <?php
-session_start();
-error_reporting(0);
-include('includes/config.php');
-if (strlen($_SESSION['personaluid']==0)) {
-   header('location:logout.php');
-} else{
-}
+  session_start();
+  error_reporting(0);
+  include('includes/config.php');
+  if (strlen($_SESSION['personaluid']==0)) {
+    header('location:logout.php');
+    } else{  
+  }  
 ?>
 
 <!DOCTYPE html>
 <html>
 
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-      <link rel="stylesheet" type="text/css" href="css/style.css">
-      <title>Personal Finances</title>
-   </head>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Personal Finance</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/datepicker3.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+  </head>
 
-   <body>
+  <body>
 
-      <?php include_once('includes/header.php');?>
-      <?php include_once('includes/sidebar.php');?>
+    <?php include_once('includes/header.php');?>
+    <?php include_once('includes/sidebar.php');?>
 
-      <div class="container">
+    <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="default">
+          <div class="heading">Yearly Form</div>
+            <div class="body">
 
-         <div class="row">
-            <div class="col-lg-12">
-               <div class="panel ">
-                  <div class="heading">Yearly Report</div>
-                  <div class="body">
+              <p><?php if($message){echo $message;}?></p>
 
-                     <p><?php if($message){echo $message;}?></p>
+              <div class="col-md-12">
 
-                     <div class="col-md-12">
-                        <form role="form" method="post" action="yearly-expense-infos.php" name="bwdatesreport">
-                           <div class="group">
-                              <label>From</label>
-                              <input class="control" type="date"  id="fromdate" name="fromdate" required="true">
-                           </div>
-                           <div class="group">
-                              <label>To</label>
-                              <input class="control" type="date"  id="todate" name="todate" required="true">
-                           </div>
-                           <div class="group">
-                              <button type="submit" class="btn btn-primary" name="submit">Submit</button>
-                           </div>
-                     </div>
-                     </form>
+                <form role="form" method="post" action="yearly-expense-infos.php" name="between-report">
+                  <div class="form-group">
+                    <label>From</label>
+                    <input class="form-control" type="date"  id="fromdate" name="fromdate" required="true">
                   </div>
-               </div>
+                  <div class="form-group">
+                    <label>To</label>
+                    <input class="form-control" type="date"  id="todate" name="todate" required="true">
+                  </div>
+                  <div class="form-group has-success">
+                    <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                  </div>
+              </div>
+              </form>
             </div>
-         </div>
-         <?php include_once('includes/footer.php');?>
+          </div>
+        </div>
       </div>
-      </div>
+      <?php include_once('includes/footer.php');?>
+    </div>
+    </div>
 
-   </body>
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/chart.min.js"></script>
+    <script src="js/chart-data.js"></script>
+    <script src="js/easypiechart.js"></script>
+    <script src="js/easypiechart-data.js"></script>
+    <script src="js/bootstrap-datepicker.js"></script>
+    <script src="js/custom.js"></script>
+    
+  </body>
 </html>
