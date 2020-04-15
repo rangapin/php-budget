@@ -33,6 +33,8 @@ progress,
 video {
   display: inline-block;
   vertical-align: baseline;
+  position: relative;
+  right: 15px;
 }
 audio:not([controls]) {
   display: none;

@@ -9,13 +9,13 @@
        $email=$_POST['email'];
        $password=md5($_POST['password']);
    
-       $return=mysqli_query($con, "select Email from user where Email='$email' ");
+       $return=mysqli_query($con, "SELECT Email FROM user WHERE Email='$email' ");
        $result=mysqli_fetch_array($return);
        if($result>0){
-   $message="This email  associated with another account";
+   $message="This email associated with another account";
        }
        else{
-       $query=mysqli_query($con, "insert into user (name, number, email,  password) value('$fname', '$mobno', '$email', '$password' )");
+       $query=mysqli_query($con, "INSERT INTO user (name, number, email, password) VALUE('$fname', '$mobno', '$email', '$password' )");
        if ($query) {
        $message="You have successfully registered";
      }
