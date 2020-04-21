@@ -27,6 +27,7 @@ if(isset($_POST['login']))
 	<meta name="theme-color" content="#1E90FF">
 	<title>Personal Finance</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<link rel="canonical" href="https://personal-finance.richardangapin.io/dashboard.php"/>
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/datepicker3.css" rel="stylesheet">
 	<link href="css/style.css" rel="stylesheet">

@@ -5,7 +5,7 @@
   "background_color": "#f5f5f5",
   "display": "standalone",
   "Scope": "/",
-  "start_url": "http://localhost/rangapin/php-budgetapp/)",
+  "start_url": "http://localhost/rangapin/php-budgetapp/index.php",
   "icons": [
     {
       "src": "images/icons/icon-72x72.png",
