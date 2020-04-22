@@ -18,6 +18,7 @@
     <link href="css/datepicker3.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="manifest" href="manifest.webmanifest">
 
   </head>
 
@@ -88,6 +89,8 @@
     <script src="js/easypiechart-data.js"></script>
     <script src="js/bootstrap-datepicker.js"></script>
     <script src="js/custom.js"></script>
+    <script src="sw.js"></script>
+
   </body>
 </html>
 <?php } ?>

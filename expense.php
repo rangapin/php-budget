@@ -32,11 +32,15 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#1E90FF">
+
     <title>Personal Finance</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/datepicker3.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="manifest" href="manifest.webmanifest">
+
   </head>
 
   <body>
@@ -86,6 +90,8 @@
     <script src="js/easypiechart-data.js"></script>
     <script src="js/bootstrap-datepicker.js"></script>
     <script src="js/custom.js"></script>
+    <script src="sw.js"></script>
+
   </body>
 </html>
 <?php }  ?>

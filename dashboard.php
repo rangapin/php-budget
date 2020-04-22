@@ -13,6 +13,7 @@
    <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="theme-color" content="#1E90FF">
       <title>Dashboard</title>
       <link href="css/bootstrap.min.css" rel="stylesheet">
       <script src="css/bootstrap.css"></script>
@@ -23,6 +24,7 @@
       <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
       <link rel="manifest" href="webwebmanifest.json">
       <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+      <link rel="manifest" href="manifest.webmanifest">
    </head>
 
    <body>
@@ -162,6 +164,8 @@
       <script src="js/easypiechart-data.js"></script>
       <script src="js/bootstrap-datepicker.js"></script>
       <script src="js/custom.js"></script>
+      <script src="sw.js"></script>
+
       <script>
          window.onload = function () {
          var chart1 = document.getElementById("line-chart").getContext("2d");
@@ -173,6 +177,7 @@
          });
          };
       </script>
+
    </body>
 </html>
 <?php } ?>
