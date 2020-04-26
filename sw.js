@@ -4,14 +4,16 @@
         cache.addAll([
           'index.php',
           'sw.js',
-          'register.php'
+          'dashboard.php'
         ]);
       }
       )
     });
+
     self.addEventListener('activate',evt=>{
       console.log(evt);
     });
+
     self.addEventListener('fetch',evt=>{
       evt.respondWith(
         caches.match(evt.request).then(rep=>{

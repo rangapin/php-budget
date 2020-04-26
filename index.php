@@ -7,7 +7,7 @@ if(isset($_POST['login']))
   {
     $email=$_POST['email'];
     $password=md5($_POST['password']);
-    $query=mysqli_query($con,"SELECT ID FROM user WHERE  Email='$email' && Password='$password' ");
+    $query=mysqli_query($con,"SELECT ID FROM user WHERE  Email='$email' && PASSWORD='$password' ");
     $return=mysqli_fetch_array($query);
     if($return>0){
       $_SESSION['personaluid']=$return['ID'];
@@ -48,14 +48,14 @@ if(isset($_POST['login']))
 					<form role="form" action="" method="post" id="" name="login">
 						<fieldset>
 							<div class="form-group">
-								<input class="form-control" placeholder="E-mail" name="email" type="email" autofocus="" required="true">
+								<input class="form-control" id= "email" placeholder="E-mail" name="email" type="email" autofocus="" required="true">
 							</div>
 							<div class="form-group">
-								<input class="form-control" placeholder="Password" name="password" type="password" value="" required="true">
+								<input class="form-control" id="password" placeholder="Password" name="password" type="password" value="" required="true">
 							</div>
 							<div class="checkbox">
-								<button type="submit" value="login" name="login" class="btn btn-primary">Login</button><span>
-									<a href="register.php" class="btn btn-primary">Register</a></span>
+								<button type="submit" value="login" name="login" class="btn btn-primary" id="login">Login</button>
+								<span><a href="register.php" class="btn btn-primary">Register</a></span>
 							</div>
 							</fieldset>
 					</form>
@@ -66,6 +66,7 @@ if(isset($_POST['login']))
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery-1.11.1.min.js"></script>
 <script src="sw.js"></script>
+<script src="local.js"></script>
 <script>
       if ('serviceWorker' in navigator){
           navigator.serviceWorker.register('sw.js');
